@@ -30,6 +30,21 @@
 typedef enum
 {
 	C4,
+	C5,
+	D5,
+	E5,
+	F5,
+	G5,
+	A5,
+	B5,
+	C6,
+	D6,
+	E6,
+	F6,
+	G6,
+	A6,
+	B6,
+	C7,
 	MAX_VALUE
 } soundToneType;
 
@@ -161,14 +176,24 @@ void CS43L22_Beep(soundToneType pitch, uint32_t duration_ms)
 	TxBuffer[0] = 0x1C;		// Register address
 	switch (pitch)
 	{
-		case C4:
-			TxBuffer[1] = 0x00;		// Value (frequency and on time)
-			break;
-		// Assume C4 for all other cases
+		case C4: TxBuffer[1] = 0x00; break;
+		case C5: TxBuffer[1] = 0x10; break;
+		case D5: TxBuffer[1] = 0x20; break;
+		case E5: TxBuffer[1] = 0x30; break;
+		case F5: TxBuffer[1] = 0x40; break;
+		case G5: TxBuffer[1] = 0x50; break;
+		case A5: TxBuffer[1] = 0x60; break;
+		case B5: TxBuffer[1] = 0x70; break;
+		case C6: TxBuffer[1] = 0x80; break;
+		case D6: TxBuffer[1] = 0x90; break;
+		case E6: TxBuffer[1] = 0xA0; break;
+		case F6: TxBuffer[1] = 0xB0; break;
+		case G6: TxBuffer[1] = 0xC0; break;
+		case A6: TxBuffer[1] = 0xD0; break;
+		case B6: TxBuffer[1] = 0xE0; break;
+		case C7: TxBuffer[1] = 0xF0; break;
 		case MAX_VALUE:
-		default:
-			TxBuffer[1] = 0x00;		// Value (frequency and on time)
-			break;
+		default: TxBuffer[1] = 0x00; break;
 	}
 	HAL_I2C_Master_Transmit(&hi2c1, CS43L22_I2C_ADDRESS, (uint8_t*) &TxBuffer, 2, I2C_TIMEOUT);
 
@@ -232,14 +257,38 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	CS43L22_Beep(C4, 1000);
-	HAL_Delay(500);
-
-	CS43L22_Beep(C4, 1500);
-	HAL_Delay(500);
-
-	CS43L22_Beep(C4, 2000);
-	HAL_Delay(500);
+	CS43L22_Beep(C4, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(C5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(D5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(E5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(F5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(G5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(A5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(B5, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(C6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(D6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(E6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(F6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(G6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(A6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(B6, 350);
+	HAL_Delay(200);
+	CS43L22_Beep(C7, 350);
+	HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
